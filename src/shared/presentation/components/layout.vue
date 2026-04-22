@@ -1,5 +1,6 @@
 <script setup>
 import {ref} from "vue";
+import FooterContent from "./footer-content.vue";
 
 const drawerVisible = ref(false);
 
@@ -27,7 +28,7 @@ const toggleDrawer = () => {
     <!-- Add Article list here -->
     <!-- Add Unavailable content alternate component here -->
   </div>
-  <!-- Add Footer content here -->
+  <footer-content/>
 </template>
 
 <style scoped>
