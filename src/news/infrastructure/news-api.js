@@ -18,7 +18,7 @@ export class NewsApi {
     }
 
     getArticlesForSourceId(sourceId) {
-        return http.get(`${topHeadlinesEndpoint}`, {params: sourceId});
+        return http.get(`${topHeadlinesEndpoint}`, {params: { sources: sourceId}});
     }
 }
 
