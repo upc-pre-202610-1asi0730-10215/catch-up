@@ -55,7 +55,7 @@ async function shareArticle() {
     }
   } else {
     try {
-      await navigator.clipboard.writeText(article['url']);
+      await navigator.clipboard.writeText(shareData['url']);
       emit('tooltip-showed');
       console.log('Article URL copied to clipboard');
     } catch (error) {
