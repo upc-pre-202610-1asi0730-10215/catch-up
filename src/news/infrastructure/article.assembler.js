@@ -22,6 +22,7 @@ export class ArticleAssembler {
             return [];
         }
         const articlesResponse = response.data;
+        console.log(response.data);
         return articlesResponse["articles"].map(article => this.toEntityFromResource(article));
     }
 }
