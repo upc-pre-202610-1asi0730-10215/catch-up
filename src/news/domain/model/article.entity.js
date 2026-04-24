@@ -3,7 +3,7 @@ import {Source} from "./source.entity.js";
 export class Article {
     constructor({ title = '', description = '', url = '',
                     urlToImage = '',
-                    source = null, publishedAt = '' } = {}) {
+                    source = null, publishedAt = '' }) {
         this.title = title;
         this.description = description;
         this.url = url;
