@@ -1,4 +1,22 @@
 <script setup>
+/**
+ * @component ArticleItem
+ * @description Presentation component that renders a single {@link Article}
+ * domain entity as a card UI element.
+ *
+ * Displays the article's cover image, headline, source avatar, publication
+ * date, description, a "read more" link, and a share/copy action.
+ *
+ * ### Props
+ * | Name      | Type      | Required | Description                        |
+ * |-----------|-----------|----------|------------------------------------|
+ * | `article` | `Article` | yes      | The article entity to display.     |
+ *
+ * ### Emitted events
+ * | Event            | Payload | Description                                               |
+ * |------------------|---------|-----------------------------------------------------------|
+ * | `tooltip-showed` | —       | Emitted when the article URL has been copied to clipboard.|
+ */
 import {useI18n} from "vue-i18n";
 import {Article} from "../../domain/model/article.entity.js";
 import {toRefs} from "vue";
@@ -9,6 +27,22 @@ const props = defineProps({article: {type: Article, required: true}});
 const { article } = toRefs(props);
 const emit = defineEmits(['tooltip-showed']);
 
+/**
+ * Shares the current article using the Web Share API when available, or
+ * falls back to copying the article URL to the system clipboard.
+ *
+ * - If `navigator.share` is supported, the browser's native share sheet is
+ *   opened with the article's title and URL.
+ * - Otherwise, the URL is written to the clipboard via
+ *   `navigator.clipboard.writeText` and the `tooltip-showed` event is
+ *   emitted so the parent can display a confirmation tooltip.
+ *
+ * Errors from both the share and clipboard APIs are caught and logged to
+ * the console without surfacing to the user.
+ *
+ * @async
+ * @returns {Promise<void>}
+ */
 async function shareArticle() {
   const shareData = { title: article['title'], url: article['url']};
   if (navigator.share) {

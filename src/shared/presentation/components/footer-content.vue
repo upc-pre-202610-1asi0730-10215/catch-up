@@ -1,4 +1,14 @@
 <script setup>
+/**
+ * @component FooterContent
+ * @description Shared presentation component that renders the application
+ * footer, including copyright information, authoring credits, and
+ * attribution links for the third-party services (NewsAPI.org and
+ * Logo.dev) used by the application.
+ *
+ * All visible strings are internationalised through Vue I18n so that the
+ * footer respects the user's selected locale.
+ */
 import {useI18n} from "vue-i18n";
 
 const { t } = useI18n();
