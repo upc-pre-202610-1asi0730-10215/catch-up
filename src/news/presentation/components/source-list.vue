@@ -1,6 +1,6 @@
 <script setup>
 import {Source} from "../../domain/model/source.entity.js";
-import {toRef} from "vue";
+import {toRefs} from "vue";
 import SourceItem from "./source-item.vue";
 
 const props = defineProps({ visible: Boolean, sources: Array[Source]});
@@ -10,7 +10,7 @@ function emitSourceSelectedEvent(source) {
   emit('source-selected', source);
 }
 
-const { visible, sources } = toRef(props);
+const { visible, sources } = toRefs(props);
 
 </script>
 
