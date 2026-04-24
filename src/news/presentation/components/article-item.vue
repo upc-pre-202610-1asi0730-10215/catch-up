@@ -1,12 +1,12 @@
 <script setup>
 import {useI18n} from "vue-i18n";
 import {Article} from "../../domain/model/article.entity.js";
-import {toRef} from "vue";
+import {toRef, toRefs} from "vue";
 
 const { t } = useI18n();
 
 const props = defineProps({article: {type: Article, required: true}});
-const { article } = toRef(props);
+const { article } = toRefs(props);
 const emit = defineEmits(['tooltip-showed']);
 
 async function shareArticle() {
@@ -63,7 +63,7 @@ async function shareArticle() {
         <a :href="article.url" target="_blank">{{ t('read-more')}}</a>
         <span class="p-spacer"></span>
         <pv-button
-          tooltip="t('article.copy-to-clipboard')"
+          v-tooltip="t('article.copy-to-clipboard')"
           :label="t('article.share')"
           aria-label="Share Article"
           class="p-button-text p-button-sm"
