@@ -16,6 +16,7 @@ export class SourceAssembler {
             return [];
         }
         const sourcesResponse = response.data;
+        console.log(response.data);
         return sourcesResponse.sources.map(source => this.toEntityFromResource(source));
     }
 }
