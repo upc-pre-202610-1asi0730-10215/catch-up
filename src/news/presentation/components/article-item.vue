@@ -1,7 +1,7 @@
 <script setup>
 import {useI18n} from "vue-i18n";
 import {Article} from "../../domain/model/article.entity.js";
-import {toRef, toRefs} from "vue";
+import {toRefs} from "vue";
 
 const { t } = useI18n();
 
@@ -63,7 +63,7 @@ async function shareArticle() {
         <a :href="article.url" target="_blank">{{ t('read-more')}}</a>
         <span class="p-spacer"></span>
         <pv-button
-          v-tooltip="t('article.copy-to-clipboard')"
+          tooltip="t('article.copy-to-clipboard')"
           :label="t('article.share')"
           aria-label="Share Article"
           class="p-button-text p-button-sm"
