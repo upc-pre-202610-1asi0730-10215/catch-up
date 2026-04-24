@@ -2,7 +2,6 @@
 import {useI18n} from "vue-i18n";
 import {Article} from "../../domain/model/article.entity.js";
 import {toRef} from "vue";
-import {Button as PvButton} from "primevue";
 
 const { t } = useI18n();
 
